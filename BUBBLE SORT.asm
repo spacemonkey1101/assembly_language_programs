@@ -1,0 +1,28 @@
+# ORG F100
+# DB 4, A2,01,03,06
+# ORG F200
+	   LXI H,F100
+	   MOV C,M
+	   DCR C
+
+ADDR3:	   MOV D,C
+	   LXI H,F101
+
+ADDR2:	   MOV A,M
+	   INX H
+	   CMP M
+	   JC ADDR1
+// SWAPPING STARTS
+	   MOV E,M
+	   DCX H
+	   MOV B,M
+	   MOV M,E
+	   INX H
+	   MOV M,B
+// SWAPPING ENDS
+
+ADDR1:	   DCR D
+	   JNZ ADDR2
+	   DCR C
+	   JNZ ADDR3
+	   HLT
