@@ -1,0 +1,21 @@
+# ORG F000
+# DB 4, 23 ,11 ,21,CD
+# ORG F100
+# DB 11
+# ORG F200
+	   LXI H,F000
+	   MOV C,M	// C = COUNTER
+	   LDA F100
+	   MOV B,A	// B = NUMBER TO BE SEARCHED
+
+ADDR2:	   INX H
+	   MOV A,M
+	   CMP B
+	   JZ ADDR1
+	   DCR C
+	   JNZ ADDR2
+	   MVI B,00
+
+ADDR1:	   INX H
+	   MOV M,B
+	   HLT

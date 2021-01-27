@@ -1,0 +1,20 @@
+// nUMBER ODF EVEN NOS IN A SERIES OF NUMBER
+# ORG F000
+# DB 02,AA,CC
+#ORG F200
+
+	   LXI H,F000
+	   MOV C,M
+	   MVI B,00
+
+ADDR1:	   INX H
+	   MOV A,M
+	   RRC
+	   JC ADDR2
+	   INR B
+
+ADDR2:	   DCR C
+	   JNZ ADDR1
+	   INX H
+	   MOV M,B
+	   HLT

@@ -1,0 +1,24 @@
+# ORG F100
+# DB 3c,4b
+# ORG F200
+	   LXI H,F100
+	   MOV A,M
+	   INX H
+	   MOV B,M
+
+ADDR3:	   CMP B
+	   JZ ADDR1
+	   JNC ADDR2
+	   MOV E,B
+	   MOV B,A
+	   MOV A,E
+	   JMP ADDR3
+
+ADDR1:	   INX H
+	   MOV M,A
+	   JMP ADDR4
+
+ADDR2:	   SUB B
+	   JMP ADDR3
+
+ADDR4:	   HLT

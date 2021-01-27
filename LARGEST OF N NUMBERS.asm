@@ -1,0 +1,21 @@
+# ORG F100
+# DB 05,02,03,01,A, 09
+# ORG F200
+	   LXI H,F100
+	   MOV C,M
+	   INX H
+	   MOV D,M	// D IS THE MAX
+	   MOV A,D
+	   DCR C
+
+ADDR:	   INX H
+	   CMP M
+	   JC ADDR1
+	   JMP ADDR2
+
+ADDR1:	   MOV D,M
+	   MOV A,D
+
+ADDR2:	   DCR C
+	   JNZ ADDR
+	   HLT

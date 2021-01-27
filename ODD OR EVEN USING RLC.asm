@@ -1,0 +1,13 @@
+// 1 FOR ODD 2 FOR EVEN
+# ORG F300
+# DB 8F
+# ORG F200
+	   LXI H,F300
+	   MVI C,02
+	   MOV A,M
+	   RRC
+	   JNC F20C
+	   MVI C,01
+	   INX H
+	   MOV M,C
+	   HLT
